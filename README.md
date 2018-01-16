@@ -1,6 +1,6 @@
 # styled-transition-transform
 
-## solution
+## solution 🤗🤩🤘🌈💫🏆
 the solution was taking out the declared *styled-component* out of the `render()` life cycle.
 
 
