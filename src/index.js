@@ -9,13 +9,15 @@ const Red = styled.div`
 	height: 100%;
 	background-color: red;
 	flex: 0 0 100%;	
-	transition: transform 500ms ease;
-	transform: translate(${
+	transition: transform 500ms ease;	
+
+	transform: ${props => `translate(${props.onStart ? '0' : '100px'})`}
+	/* transform: translate(${
 		props => {
 			console.log('onStart:', props.onStart);
 			return props.onStart ? '0' : '100px'
 		}
-	});
+	}); */
 `;
 
 
@@ -41,13 +43,8 @@ const Changer = (props) => {
 	return <Button onClick={onClickHandler}>Change!</Button>
 }
 
-class App extends React.Component {
-	state = { onStart: true	};
 
-	toggleOnStart = () => {	this.setState({onStart: !this.state.onStart}) }
-
-	render(){
-		const Wrapper = styled.div`
+const Wrapper = styled.div`
 			width: 100%;
 			height: 100%;
 			background: gray;
@@ -55,7 +52,13 @@ class App extends React.Component {
 			overflow:hidden;
 			position: relative;
 		`;
-	
+
+class App extends React.Component {
+	state = { onStart: true	};
+
+	toggleOnStart = () => {	this.setState({onStart: !this.state.onStart}) }
+
+	render(){
 		return (
 			<Wrapper>
 				<Changer toggleOnStart={this.toggleOnStart} />
